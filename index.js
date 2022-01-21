@@ -14,12 +14,11 @@ const getFullName = () => {
 }
 
 const addPet = (petName) => {
-    petName = "Roberta"; 
 user1.pets.push(petName)
 }
 
 const countPets = () => {
-    console.log(user1.pets.length);
+    console.log(`Cantidad de mascotas ${user1.pets.length}`);
 }
 
 const addBook = (bookName, bookAutor) => {
@@ -37,7 +36,8 @@ console.log(bookNames)
 
 getFullName();
 countPets();
-addPet();
+addPet("Roberta");
 addBook("Demian", "Herman Hesse");
 getBookNames();
 console.log(user1);
+countPets();
