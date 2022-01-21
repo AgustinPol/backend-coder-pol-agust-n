@@ -38,6 +38,7 @@ getFullName();
 countPets();
 addPet("Roberta");
 addBook("Demian", "Herman Hesse");
+addBook("Harry Potter y las reliquias de la muerte", "J.K.Rowling");
 getBookNames();
 console.log(user1);
 countPets();
