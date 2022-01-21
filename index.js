@@ -7,47 +7,37 @@ class Usuario {
     }
 }
 
-let userName = "Agustín";
-let lastname = "Pol";
-let books = [
-      {
-      bookName: "El lobo estepario", bookAutor: "Herman Hesse"
-      },
-      {
-      bookName: "El alquimista", bookAutor: "Paulo Coehlo"    
-      }
-    ] 
-let pets = ["Lalita", "Ragnar" ];
-
-let newUser = {
-userName: userName,
-lastname: lastname,
-books: books,
-pets: pets,
-}
-
-const user1 = new Usuario(newUser)
-
-const petsArray = []; 
+const user1 = new Usuario("Agustín", "Pol", [{bookName: "El lobo estepario", bookAutor: "Herman Hesse"}, {bookName: "El alquimista", bookAutor: "Paulo Coehlo" }], ["Lalita", "Ragnar"])
 
 const getFullName = () => {
     console.log(`User Name: ${user1.userName} ${user1.lastname}`)
 }
 
 const addPet = (petName) => {
-petsArray.push()
+    petName = "Roberta"; 
+user1.pets.push(petName)
 }
 
 const countPets = () => {
-    return petsArray.length;
+    console.log(user1.pets.length);
 }
 
 const addBook = (bookName, bookAutor) => {
 let newBook = {bookName, bookAutor}
+user1.books.push(newBook)
 }
 
 const getBookNames = () => {
-    
+    const bookNames = []
+    user1.books.forEach(book => {
+    bookNames.push(book.bookName)
+});
+console.log(bookNames)
 } 
 
 getFullName();
+countPets();
+addPet();
+addBook("Demian", "Herman Hesse");
+getBookNames();
+console.log(user1);
