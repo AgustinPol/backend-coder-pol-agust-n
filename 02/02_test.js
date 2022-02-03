@@ -37,7 +37,7 @@ const fileTest = async () => {
     console.log("Buscamos producto con un ID existente: ", await newFile.getByID(4));
     console.log("Borramos el producto con ID 2" , await newFile.deleteByID(2));
     console.log("Listado actualizado: ", await newFile.getAll());
-    await newFile.deleteAll();
+    // await newFile.deleteAll();
 }
 
 fileTest();

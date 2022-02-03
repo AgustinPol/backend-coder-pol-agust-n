@@ -3,7 +3,7 @@ const fs = require("fs");
 class Contenedor {
     constructor (fileName) {
         this.fileName = fileName;
-    }
+        }
 
     save = async (newProduct) => {
         const products = await this.getAll();

@@ -6,15 +6,15 @@
     "id": 1
   },
   {
+    "title": "Camiseta River",
+    "price": 12499,
+    "thumbnail": "https://www.dexter.com.ar/on/demandware.static/-/Sites-dabra-catalog/default/dw33965a81/products/AD_GU9603/AD_GU9603-1.JPG",
+    "id": 2
+  },
+  {
     "title": "Camiseta Selección Argentina",
     "price": 13499,
     "thumbnail": "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/6d85036726614f5a9b69ab7d014920bf_9366/Camiseta_Titular_Seleccion_Argentina_Blanco_FS6565_01_laydown.jpg",
     "id": 3
-  },
-  {
-    "title": "Camiseta Racing",
-    "price": 11499,
-    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_2X_682319-MLA45741881324_042021-F.webp",
-    "id": 4
   }
 ]
