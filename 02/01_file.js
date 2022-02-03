@@ -5,7 +5,7 @@ class Contenedor {
         this.fileName = fileName;
         }
 
-    save = async (newProduct) => {
+    async save (newProduct) {
         const products = await this.getAll();
         if (products.length === 0) {
             newProduct.id = 1;
@@ -21,7 +21,7 @@ class Contenedor {
         }
     }
 
-    getAll = async () => {
+    async getAll () {
         try {
             const products = await fs.promises.readFile(`./${this.fileName}`, "utf-8");
             return JSON.parse(products);
@@ -32,7 +32,7 @@ class Contenedor {
         }
     }
 
-    getByID = async (productID) => {
+    async getByID (productID) {
         try {
             const products = await this.getAll();
             let result = products.find( x => x.id === productID);
@@ -49,7 +49,7 @@ class Contenedor {
         
     }
 
-    deleteByID = async (thisID) => {
+    async deleteByID(thisID) {
         let currentList = await this.getAll();
         let newList = currentList.filter( x => x.id !== thisID);
         try {
@@ -59,7 +59,7 @@ class Contenedor {
         }
     }
 
-    deleteAll = async () => {
+    async deleteAll() {
         try {
             await fs.promises.writeFile(`./${this.fileName}`, '');
             console.log("Los productos fueron borrados");

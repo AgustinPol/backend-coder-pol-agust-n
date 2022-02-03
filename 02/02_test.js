@@ -31,13 +31,13 @@ const fileTest = async () => {
     console.log("Se agregó el producto 1: ", await newFile.save(product1));
     console.log("Se agregó el producto 2: ", await newFile.save(product2));
     console.log("Se agregó el producto 3: ", await newFile.save(product3));
-    console.log("Se agregó el producto 3: ", await newFile.save(product4));
+    console.log("Se agregó el producto 4: ", await newFile.save(product4));
     console.log("Listado actualizado de productos: ", await newFile.getAll());
     console.log("Buscamos producto con ID no existente(null): ", await newFile.getByID(5));
     console.log("Buscamos producto con un ID existente: ", await newFile.getByID(4));
     console.log("Borramos el producto con ID 2" , await newFile.deleteByID(2));
     console.log("Listado actualizado: ", await newFile.getAll());
-    // await newFile.deleteAll();
+    await newFile.deleteAll();
 }
 
 fileTest();
