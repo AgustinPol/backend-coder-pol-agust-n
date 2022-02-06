@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
         res.send("<h1 style='color: olive'>¡Bienvenidos! ¡Vean nuestros productos!</h1>");
     }
     catch (error) {
-        console.log("Hubo un error al intentar mostrar título", error.message);
+        res.send("Hubo un error al intentar mostrar título", error.message);
     }
 })
 
@@ -27,7 +27,7 @@ app.get("/productos", async (req, res) => {
         res.send(products);
     }
     catch (error) {
-        console.log("Hubo un error para conseguir array productos",error.message); 
+        res.send("Hubo un error para conseguir array productos",error.message); 
     }
    
 })
@@ -39,7 +39,7 @@ app.get("/productoRandom", async (req, res) => {
         res.send(randomProd);
     }
     catch (error) {
-        console.log("Hubo un error al buscar un producto Random", error.message); 
+        res.send("Hubo un error al buscar un producto Random", error.message); 
     }
        
     })
