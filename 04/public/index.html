@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myApp</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body> 
+    <h1 class="myTitle">MyApp - Bienvenidos</h1>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a href="info.html">Info</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Agrega un producto</h2>
+<form action="/api/productos" method="post">
+    <div style="margin: 0.5rem">
+        <label style="font-weight: bold;" for="nombre">Nombre</label>
+        <input type="text" name="name" id="nombre">
+    </div>
+
+    <div style="margin: 0.5rem">
+        <label style="font-weight: bold;" for="precio">Precio</label>
+        <input type="number" name="price" id="precio">
+    </div>
+
+    <div style="margin: 0.5rem">
+        <label style="font-weight: bold;" for="imagen">Imagen</label>
+        <input type="text" name="thumbnail" id="imagen">
+    </div>
+
+    <div style="margin: 0.5rem;">
+        <input type="submit" value="Crear producto">
+    </div>
+</form>
+       
+    </main>
+
+
+</body>
+</html>
