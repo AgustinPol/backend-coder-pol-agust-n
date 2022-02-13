@@ -13,7 +13,7 @@ app.use("/api", apiRoutes);
 
 const connectedServer = app.listen(PORT, ()=> {
   try {
-    console.log(`Server is up and running on port ${PORT}`);
+    console.log(`Servidor levantado y funcionando en puerto ${PORT}`);
   } 
   catch {
     console.log("hubo un error al levantar servidor");
