@@ -20,17 +20,17 @@ router.get("/:productId", (req, res) => {
     if (!mySearch) {
         return res.status(404).json({ error: `¡Error! Producto ${productId} no encontrado`});
     }
-    return res.json({ success: true, result: mySearch });
+    return res.json({ info: "¡Producto Encontrado con éxito!", result: mySearch });
 });
 
 router.post("/", (req, res) => {
-    const { name, price, thumbnail } = req.body;
-    if ( !name || !price || !thumbnail) {
-      return res.status(400).json({ error: 'Error, no es el formato correcto' });
+    const { title, price, thumbnail } = req.body;
+    if ( !title || !price || !thumbnail) {
+      return res.status(400).json({ error: 'Error, formato incorrecto' });
     }
     const newProduct = {
       id: products.length + 1,
-      name,
+      title,
       price,
       thumbnail
     };
@@ -39,28 +39,28 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:productId", (req, res) => {
-    const { params: { productId }, body: { name, price, thumbnail} } = req;
-    if ( !name || !price || !thumbnail) {
-      return res.status(400).json({ success: false, error: 'Error, formato incorrecto' });
+    const { params: { productId }, body: { title, price, thumbnail} } = req;
+    if ( !title || !price || !thumbnail) {
+      return res.status(400).json({ error: 'Error, formato incorrecto' });
     };
-    const productIndex = products.findIndex((product) => product.id === +productId);
-    if (productIndex < 0) return res.status(404).json({ success: false, error: `¡El producto que quiere actualizar (${productId}) no existe!`});
+    const productIndex = products.findIndex((p) =>p.id === +productId);
+    if (productIndex < 0) return res.status(404).json({ error: `¡El producto que quiere actualizar (${productId}) no existe!`});
     const newProduct = {
       ...products[productIndex],
-      name,
+      title,
       price,
       thumbnail
     };
     products[productIndex] = newProduct;
-    return res.json({ success: true, result: newProduct});
+    return res.json({ info: "Producto correctamente actualizado", result: newProduct});
 });
 
 router.delete("/:productId", (req, res) => {
         const { productId } = req.params;
-        const productIndex = products.findIndex(product => product.id === +productId);
+        const productIndex = products.findIndex(p => p.id === +productId);
         if (productIndex < 0) return res.status(404).json({ error: `¡Error! Producto ${productId} no encontrado`});
         products.splice(productIndex, 1);
-        return res.json({ success: true, result: 'Producto correctamente eliminado' });
+        return res.json({ result: `Producto ${productId} correctamente eliminado` });
       });   
 
 module.exports = router;
