@@ -1,0 +1,13 @@
+.myDiv {
+    background-color: antiquewhite;
+    padding: 2rem;
+    margin: 1rem;
+}
+
+.myLabel {
+    font-weight: bold;
+}
+
+h1 {
+    color: rgba(70, 59, 59, 0.877);
+}
