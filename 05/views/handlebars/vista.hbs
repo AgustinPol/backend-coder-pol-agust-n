@@ -1,22 +1,30 @@
+<style>
+   img {
+            width: 120px;
+            height: 130px; 
+            object-fit: contain ;
+        }
+</style>
+
 <div class="jumbotron">
-    <h1>Vista de Productos</h1>
+    <h1>Nuestro listado de productos</h1>
     <br>
 
-    {{#if hayProductos}}
+    {{#if haveProducts}}
     <div class="table-responsive">
         <table class="table table-dark">
             <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
-                <th>Foto</th>
+                <th>Imágen</th>
                 <th>Id producto</th>
             </tr>
-            {{#each productos}}
+            {{#each products}}
             <tr>
-                <td>{{this.title}}</td>
-                <td>${{this.price}}</td>
-                <td><img width="50" src={{this.thumbnail}} alt="not found"></td>
-                <td>{{this.id}}</td>
+                <td class="text-info font-weight-bold">{{this.title}}</td>
+                <td class="text-info font-weight-bold">${{this.price}}</td>
+                <td><img src={{this.thumbnail}} alt={{this.title}}></td>
+                <td class="text-info font-weight-bold">{{this.id}}</td>
             </tr>
             {{/each}}
         </table>
