@@ -13,23 +13,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Vista HBS
-// app.engine(
-//     "hbs",
-//     handlebars({
-//         extname: ".hbs",
-//         defaultLayout: 'index.hbs',
-//     })
-// );
-// app.set("view engine", "hbs");
-// app.set("views", "./views/handlebars");
+app.engine(
+    "hbs",
+    handlebars({
+        extname: ".hbs",
+        defaultLayout: 'index.hbs',
+    })
+);
+app.set("view engine", "hbs");
+app.set("views", "./views/handlebars");
 
 // Vista PUG
 // app.set("view engine", "pug");
 // app.set("views", "./views/pug");
 
 // Vista EJS
-app.set("view engine", "ejs");
-app.set("views", "./views/ejs");
+// app.set("view engine", "ejs");
+// app.set("views", "./views/ejs");
 
 
 app.post('/productos', (req, res) => {
