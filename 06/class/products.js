@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-class Contenedor {
+class Products {
     constructor(name) {
         this.fileName = name
         this.countID = 0
@@ -38,4 +38,4 @@ class Contenedor {
 
 }
 
-module.exports = Contenedor
+module.exports = Products;

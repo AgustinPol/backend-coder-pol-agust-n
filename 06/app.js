@@ -1,8 +1,9 @@
 const express = require("express");
-const Contenedor = require("./class/contenedor");
+const Products = require("./class/products");
 const handlebars = require("express-handlebars");
 const { Server: HttpServer } = require("http");
 const { Server: IOServer } = require("socket.io");
+const e = require("express");
 
 const app = express();
 const httpServer = new HttpServer(app);
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./views/layouts"));
 
-const productos = new Contenedor(__dirname + "/data/productos.json");
+const productos = new Products(__dirname + "/data/data.json");
 const messages = [];
 
 app.engine(
@@ -27,22 +28,22 @@ app.set("views engine", "hbs");
 
 app.get("/", (req, res) => {
   let content = productos.content;
-  let boolean = content.length !== 0;
+  let haveProducts = content.length !== 0;
   return res.render("layouts/main.hbs", {
     list: content,
-    showList: boolean,
+    showList: haveProducts,
   });
 });
 
 app.post("/", (req, res) => {
   productos.save(req.body);
   let content = productos.content;
-  let boolean = content.length !== 0;
-  return res.render("layouts/main.hbs", { list: content, showList: boolean });
+  let haveProducts = content.length !== 0;
+  return res.render("layouts/main.hbs", { list: content, showList: haveProducts });
 });
 
 httpServer.listen(process.env.PORT || 8080, () => {
-  console.log("SERVER ON");
+  console.log("Server running on port: 8080");
 });
 
 /* CHAT */

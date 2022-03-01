@@ -1,17 +1,17 @@
-let username = sessionStorage.getItem("username");
-if (!username) {
-  username = prompt("Ingrese email");
+let userName = sessionStorage.getItem("username");
+if (!userName) {
+  userName = prompt("Ingrese email");
 }
-$("#username").html(username);
+$("#username").html(userName);
 
 const socket = io.connect();
 
-function render(data) {
-  data.forEach((info) => {
+const render = (data) => {
+  data.forEach((msg) => {
     $("#messages").prepend(`
       <div>
-          <em class="text-primary fw-bold">${info.author}</em>
-          [<em class="text-danger">${info.time}</em>]: <em class="text-success fst-italic">${info.text}</em>
+          <em class="text-primary fw-bold">${msg.author}</em>
+          [<em style={"color: brown;"}>${msg.time}</em>]: <em class="text-success fst-italic">${msg.text}</em>
       </div>
     `);
   });
@@ -26,7 +26,7 @@ $('#myChat').on('submit', e => {
   e.preventDefault();
 
   const message = {
-    author: username,
+    author: userName,
     text: $("#text").val()
   };
 
