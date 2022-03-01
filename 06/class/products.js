@@ -16,23 +16,23 @@ class Products {
 				if (element.id > this.countID) this.countID = element.id;
 			}
 		} catch (error) {
-			console.log('Aún no hay archivo');
+			console.log('No hay productos cargados');
 		}
     }
 
-    async write() { //Método que escribe/sobreescribe: de este manera queda más limpio el código de los otros métodos
+    async write() { 
         await fs.promises.writeFile(this.fileName, JSON.stringify(this.content))
     }
 
     save(object) {
-        this.countID++ //Aumento la propiedad que va guardando el ID más alto
-        object["id"] = this.countID //Agrego la propiedad id al objeto pasado como parámetro
-        this.content.push(object) //Agrego el objeto al contenido(array)
-        this.write() //Agrego el objeto al archivo
-        return `El id del objeto añadido es ${this.countID}.` //Retorna el ID (lo solicita la consigna)
+        this.countID++ 
+        object["id"] = this.countID 
+        this.content.push(object) 
+        this.write() 
+        return `El id del objeto añadido es ${this.countID}.` 
     }
 
-    getAll() { //Devuelve un array con los objetos presentes en el archivo
+    getAll() { 
         return this.content
     }
 
