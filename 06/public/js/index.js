@@ -17,16 +17,16 @@ const render = (data) => {
   });
 }
 
-const formAgregarProducto = document.getElementById('formAgregarProducto');
-formAgregarProducto.addEventListener('submit', e => {
+const addProduct = document.getElementById('addProduct');
+addProduct.addEventListener('submit', e => {
     e.preventDefault();
     const producto = {
-        title: formAgregarProducto[0].value,
-        price: formAgregarProducto[1].value,
-        thumbnail: formAgregarProducto[2].value
+        title: addProduct[0].value,
+        price: addProduct[1].value,
+        thumbnail: addProduct[2].value
     }
     socket.emit('update', producto);
-    formAgregarProducto.reset();
+    addProduct.reset();
 });
 
 socket.on('productos', productos => {
