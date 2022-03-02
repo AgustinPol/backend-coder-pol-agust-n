@@ -7,7 +7,7 @@
 </style>
 
 <h2 class="text-danger">Lista de productos</h1>
-  {{#if showList }}
+{{#if productos.length }}
     <div class="table-responsive">
         <table class="table table-dark">
             <tr>
@@ -16,8 +16,8 @@
                 <th>Imágen</th>
                 <th>Id producto</th>
             </tr>
-          {{#each list}}
-              <tr>
+          {{#each productos}}
+            <tr>
                 <td class="text-info font-weight-bold">{{this.title}}</td>
                 <td class="text-info font-weight-bold">${{this.price}}</td>
                 <td><img src={{this.thumbnail}} alt={{this.title}}></td>
