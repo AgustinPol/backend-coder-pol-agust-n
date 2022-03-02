@@ -29,18 +29,18 @@ addProduct.addEventListener('submit', e => {
     addProduct.reset();
 });
 
-socket.on('productos', productos => {
-  makeHtmlTable(productos).then(html => {
+socket.on('productos', products => {
+  addTable(products).then(html => {
       document.getElementById('productos').innerHTML = html;
   })
 });
 
-function makeHtmlTable(productos) {
+function addTable(products) {
   return fetch('../handlebars/products.hbs')
-      .then(respuesta => respuesta.text())
+      .then(res => res.text())
       .then(plantilla => {
           const template = Handlebars.compile(plantilla);
-          const html = template({ productos });
+          const html = template({ products });
           return html;
       })
 }
