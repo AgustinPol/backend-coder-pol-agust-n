@@ -1,0 +1,59 @@
+
+  [
+    {
+      "id": 1,
+      "timestamp": "10:22",
+      "description": "mouse",
+      "code": 20123,
+      "name": "Mouse Logitech rosa",
+      "price": 2440,
+      "img":
+      "https://http2.mlstatic.com/D_NQ_NP_2X_674801-MLA43269505256_082020-F.webp",
+      "stock": 25
+  
+    },
+    {
+      "id": 2,
+      "timestamp": "10:23",      
+      "description": "mouse",
+      "code": 20122,
+      "name": "Mouse Logitech negro",
+      "price": 1270,
+      "img":
+        "https://http2.mlstatic.com/D_NQ_NP_2X_918568-MLA32146214305_092019-F.webp",
+      "stock": 25  
+    },
+    {
+      "id": 3,
+      "timestamp": "10:24",
+      "description": "mouse",
+      "code": 20121,
+      "name": "Mouse Logitech Pebble gris",
+      "price": 2499,
+      "img":
+      "https://http2.mlstatic.com/D_NQ_NP_2X_735538-MLA43269505273_082020-F.webp",
+      "stock": 25
+    },
+    {
+      "id": 4,
+      "timestamp": "10:25",
+      "description": "teclado",
+      "code": 20120,
+      "name": "Teclado Gamer Redragon Dark Avenger QWERTY",
+      "price": 4999,
+      "img":
+      "https://http2.mlstatic.com/D_NQ_NP_2X_860827-MLA43976066837_112020-F.webp",
+      "stock": 25
+    },
+    {
+      "id": 5,
+      "timestamp": "10:26",
+      "description": "teclado",
+      "code": 20125,
+      "name": "Teclado Bluetooth Logitech QWERTY blanco",
+      "price": 3957,
+      "img":
+      "https://http2.mlstatic.com/D_NQ_NP_2X_893318-MLA46869134984_072021-F.webp",
+      "stock": 25
+    }
+  ]
