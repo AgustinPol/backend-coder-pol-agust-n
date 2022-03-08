@@ -1,25 +1,9 @@
 [
   {
-    "timestamp": "02/03/2022 03:29:05 pm",
+    "timestamp": "08/03/2022 10:18:50 am",
     "products": [
-      2,
-      3
+      2
     ],
-    "id": 2
-  },
-  {
-    "timestamp": "07/03/2022 04:20:02 pm",
-    "products": [],
-    "id": 3
-  },
-  {
-    "timestamp": "07/03/2022 04:21:29 pm",
-    "products": [],
-    "id": 4
-  },
-  {
-    "timestamp": "07/03/2022 07:20:28 pm",
-    "products": [],
-    "id": 5
+    "id": 1
   }
 ]
