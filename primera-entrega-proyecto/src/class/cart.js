@@ -4,7 +4,7 @@ const productsPath = __dirname + './../files/products.json'
 
 const showError = (error) => {
     return {
-        status: "error",
+        status: "Error",
         error: error
     }
 }
@@ -20,7 +20,7 @@ class CartHandler {
                     carts.push(cart);
                     await fs.promises.writeFile(cartPath, JSON.stringify(carts, null, 2));
                     return {
-                        status: "success",
+                        status: "Success",
                         msg: "First cart created"
                     }
                 }
@@ -28,7 +28,7 @@ class CartHandler {
                 carts.push(cart);
                 await fs.promises.writeFile(cartPath, JSON.stringify(carts, null, 2));
                 return {
-                    status: "success",
+                    status: "Success",
                     msg: "Cart added"
                 }
             } catch (error) {
@@ -39,7 +39,7 @@ class CartHandler {
                 cart.id = 1;
                 await fs.promises.writeFile(cartPath, JSON.stringify([cart], null, 2));
                 return {
-                    status: "success",
+                    status: "Success",
                     msg: "Array Created!"
                 }
             } catch (error) {
@@ -52,12 +52,12 @@ class CartHandler {
             const getCart = await fs.promises.readFile(cartPath, 'utf-8');
             const cart = JSON.parse(getCart);
             return {
-                status: "success",
+                status: "Success",
                 payload: cart
             }
         }
         return {
-            status: "error",
+            status: "Error",
             msg: "This cart is empty!"
         }
     }
@@ -65,18 +65,18 @@ class CartHandler {
         if (fs.existsSync(pathToUsers)) {
             fs.unlinkSync(pathToUsers)
             return {
-                status: "success",
+                status: "Success",
                 msg: "Cart deleted!"
             }
         }
         return {
-            status: "error",
+            status: "Error",
             msg: "This cart is empty!"
         }
     }
     deleteOneProduct = async (id) => {
         if (isNaN(id)) return {
-            status: "error",
+            status: "Error",
             error: "ID must be a number"
         }
         const getCarts = await fs.promises.readFile(cartPath, 'utf-8');
@@ -84,7 +84,7 @@ class CartHandler {
         const newCartList = carts.filter(cart => cart.id !== parseInt(id));
         await fs.promises.writeFile(cartPath, JSON.stringify(newCartList, null, 2));
         return {
-            status: "success",
+            status: "Success",
             msg: "Product deleted"
         }
     }
@@ -93,7 +93,7 @@ class CartHandler {
         const carts = JSON.parse(getCarts);
         const cartFound = carts.find(cart => cart.id === parseInt(id));
         return {
-            status: "success",
+            status: "Success",
             Item: cartFound.products
         }
     }
@@ -107,8 +107,8 @@ class CartHandler {
         cartFound.products.push(productFound.id);
         await fs.promises.writeFile(cartPath, JSON.stringify(carts, null, 2))
         return {
-            status: "success",
-            msg: `${productFound.name} added to cart number °${cartFound.id}`
+            status: "Success",
+            msg: `${productFound.name} added to cart whit id ${cartFound.id}`
         }
     }
     deleteProductFromCart = async (cart_id, product_id) => {
@@ -121,8 +121,8 @@ class CartHandler {
 
         await fs.promises.writeFile(cartPath, JSON.stringify(carts, null, 2))
         return {
-            status: "success",
-            msg: `Item removed from cart number °${cartFound.id}`
+            status: "Success",
+            msg: `Item removed from cart whit id ${cartFound.id}`
         }
     }
 }

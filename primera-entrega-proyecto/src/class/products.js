@@ -3,7 +3,7 @@ const productsPath = __dirname + './../files/products.json';
 
 const showError = (error) => {
     return {
-        status: "error",
+        status: "Error",
         error: error
     }
 }
@@ -15,7 +15,7 @@ class ProductsHandler {
                 const getProducts = await fs.promises.readFile(productsPath, 'utf-8', null, 2);
                 const products = JSON.parse(getProducts);
                 return {
-                    status: 'success',
+                    status: 'Success',
                     payload: products
                 }
             } catch (error) {
@@ -33,7 +33,7 @@ class ProductsHandler {
                     products.push(product);
                     await fs.promises.writeFile(productsPath, JSON.stringify(products, null, 2));
                     return {
-                        status: "succes",
+                        status: "Success",
                         msg: "First product added"
                     }
                 }
@@ -42,7 +42,7 @@ class ProductsHandler {
                 products.push(product);
                 await fs.promises.writeFile(productsPath, JSON.stringify(products, null, 2));
                 return {
-                    status: "success",
+                    status: "Success",
                     msg: "Product added!"
                 }
             } catch (error) {
@@ -53,7 +53,7 @@ class ProductsHandler {
                 product.id = 1;
                 await fs.promises.writeFile(productsPath, JSON.stringify([product], null, 2));
                 return {
-                    status: "success",
+                    status: "Success",
                     msg: "Array Created!"
                 }
             } catch (error) {
@@ -64,13 +64,13 @@ class ProductsHandler {
     deleteById = async (id) => {
         if (!id) {
             return {
-                status: "error",
+                status: "Error",
                 error: "ID missing"
             }
         }
         if (isNaN(id)) {
             return {
-                status: "error",
+                status: "Error",
                 error: "ID is not a number"
             }
         }
@@ -82,13 +82,13 @@ class ProductsHandler {
     updateProduct = async (id, updatedProduct) => {
         if (!id) {
             return {
-                status: "error",
+                status: "Error",
                 error: "ID missing"
             }
         }
         if (isNaN(id)) {
             return {
-                status: "error",
+                status: "Error",
                 error: "ID is not a number"
             }
         }
@@ -106,7 +106,7 @@ class ProductsHandler {
                 })
                 await fs.promises.writeFile(productsPath, JSON.stringify(newProducts, null, 2));
                 return {
-                    status: "success",
+                    status: "Success",
                     msg: "Product updated"
                 }
             } catch (error) {
@@ -117,7 +117,7 @@ class ProductsHandler {
     getProductById = async (id) => {
         if (isNaN(id))
             return {
-                status: "error",
+                status: "Error",
                 error: "ID must be a number"
             }
 
@@ -125,7 +125,7 @@ class ProductsHandler {
         const products = JSON.parse(getProducts);
         const productFound = products.find(prod => prod.id === parseInt(id));
         if (productFound) return {
-            status: "success",
+            status: "Success",
             msg: productFound
         }
     }
