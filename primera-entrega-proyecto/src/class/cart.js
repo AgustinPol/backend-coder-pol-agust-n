@@ -15,13 +15,13 @@ class CartHandler {
             try {
                 const getCarts = await fs.promises.readFile(cartPath, 'utf-8');
                 const carts = JSON.parse(getCarts);
-                if (carts.legnth === 0) {
+                if (carts.length === 0) {
                     cart.id = 1;
                     carts.push(cart);
                     await fs.promises.writeFile(cartPath, JSON.stringify(carts, null, 2));
                     return {
                         status: "success",
-                        msg: "1st cart created"
+                        msg: "First cart created"
                     }
                 }
                 cart.id = carts[carts.length - 1].id + 1;
@@ -52,13 +52,13 @@ class CartHandler {
             const getCart = await fs.promises.readFile(cartPath, 'utf-8');
             const cart = JSON.parse(getCart);
             return {
-                status: "succes",
+                status: "success",
                 payload: cart
             }
         }
         return {
             status: "error",
-            msg: "Your cart is empty!"
+            msg: "This cart is empty!"
         }
     }
     deleteCart = () => {
@@ -66,12 +66,12 @@ class CartHandler {
             fs.unlinkSync(pathToUsers)
             return {
                 status: "success",
-                msg: "Cart cleared!"
+                msg: "Cart deleted!"
             }
         }
         return {
             status: "error",
-            msg: "Your cart is empty!"
+            msg: "This cart is empty!"
         }
     }
     deleteOneProduct = async (id) => {
@@ -85,7 +85,7 @@ class CartHandler {
         await fs.promises.writeFile(cartPath, JSON.stringify(newCartList, null, 2));
         return {
             status: "success",
-            msg: "Cart deleted"
+            msg: "Product deleted"
         }
     }
     getProductsInCart = async (id) => {
@@ -112,19 +112,13 @@ class CartHandler {
         }
     }
     deleteProductFromCart = async (cart_id, product_id) => {
-        // Pido las carts para buscar de cuál de todas quiero eliminar el array de productos
         const getCarts = await fs.promises.readFile(cartPath, 'utf-8');
         const carts = JSON.parse(getCarts);
-        // Identifico el carrito (lo identifico con el cart_id que me llega por los params en el .delete)
         const cartFound = carts.find(cart => cart.id === parseInt(cart_id));
-        // un poco de destructuring para que quede más acotado el código
         const productList = cartFound.products
-        // Uso el filter para recibir un nuevo array sin el product_id que me llega por params
-        // Notese que pongo num=> num (esto se debe a que es un array de números, no existe propiedades con valores)
         const filteredProductList = productList.filter(num => num !== parseInt(product_id));
-        // Pusheo al carrito que se buscó por params el nuevo array
         cartFound.products = filteredProductList;
-        // escribo de vuelta carts en el fs
+
         await fs.promises.writeFile(cartPath, JSON.stringify(carts, null, 2))
         return {
             status: "success",

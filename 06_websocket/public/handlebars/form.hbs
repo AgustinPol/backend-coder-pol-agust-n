@@ -1,0 +1,28 @@
+<style>
+   form {
+            padding: 0.9rem;
+            margin: 0.7rem;
+        }
+</style>
+
+<h2 class="text-success font-weight-bold">Ingrese sus productos en el siguiente formulario</h2>
+
+<form id="formAgregarProducto" class="bg-dark">
+    <article class="form-group">
+        <label for="nombre" class="myLabel text-info">Nombre</label>
+        <input id="nombre" class="form-control" type="text" name="title" required>
+    </article>
+
+    <article class="form-group">
+        <label for="precio" class="myLabel text-info">Precio</label>
+        <input id="precio" class="form-control" type="number" step="0.01" name="price" required>
+    </article>
+
+    <article class="form-group">
+        <label for="foto" class="myLabel text-info">URL Imágen</label>
+        <input id="foto" class="form-control" type="url" name="thumbnail" required>
+    </article>
+
+    <button class="btn btn-success mt-3">Crear Producto</button>
+</form>
+<br>

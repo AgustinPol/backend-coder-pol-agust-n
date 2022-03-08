@@ -9,13 +9,13 @@ router.get('/(:id)?', (req, res) => {
         apiProducts.getProductById(req_id).then(result=>res.send(result));
         return{
             status:"success",
-            msg: '1 product shown'
+            msg: 'this is the product you were looking for'
         }
     }
     apiProducts.getAllProducts().then(result => res.send(result));
     return{
         status:"success",
-        msg: "Product's list shown"
+        msg: "This is the list of all products"
     }
 })
 
@@ -28,7 +28,7 @@ router.delete('/:id', (req, res) => {
     const req_id = req.params['id'];
     if (isNaN(req_id)) return res.send({
         status: "error",
-        error: "Invalid ID"
+        error: "Incorrect ID"
     })
     apiProducts.deleteById(req_id).then(product => res.send(product));
 })

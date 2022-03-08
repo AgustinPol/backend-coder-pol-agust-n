@@ -34,7 +34,7 @@ class ProductsHandler {
                     await fs.promises.writeFile(productsPath, JSON.stringify(products, null, 2));
                     return {
                         status: "succes",
-                        msg: "1st prod added"
+                        msg: "First product added"
                     }
                 }
                 
@@ -125,7 +125,7 @@ class ProductsHandler {
         const products = JSON.parse(getProducts);
         const productFound = products.find(prod => prod.id === parseInt(id));
         if (productFound) return {
-            status: "succes",
+            status: "success",
             msg: productFound
         }
     }
