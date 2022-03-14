@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous"/>
+        <title>Desafio Websocket</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+            integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+  <body class="container mt-3">
+    <br>
+    <div class="container jumbotron alert-warning">
+        
+        <!-- form -->
+        <div>
+            <h2 class="text-success font-weight-bold">Ingrese sus productos en el siguiente formulario</h2>
+            <form id="addProduct" class="bg-dark myForm m-2 p-3">
+                <article class="form-group">
+                    <label for="nombre" class="myLabel text-info">Nombre</label>
+                    <input id="nombre" class="form-control" type="text" name="title" required>
+                </article>
+            
+                <article class="form-group">
+                    <label for="precio" class="myLabel text-info">Precio</label>
+                    <input id="precio" class="form-control" type="number" step="0.01" name="price" required>
+                </article>
+            
+                <article class="form-group">
+                    <label for="foto" class="myLabel text-info">URL Imágen</label>
+                    <input id="foto" class="form-control" type="url" name="thumbnail" required>
+                </article>
+            
+                <button class="btn btn-success mt-3">Crear Producto</button>
+            </form>
+            <br> 
+        </div>
+         
+        <!-- productos   -->
+      <div id="productos"></div>
+      <!-- chat   -->
+      <div class="m-3 p-3">
+        <h2 class="text-primary">Centro de mensajes</h2>
+        <form action="/" method="post" id="myChat" class="bg-white m-3 p-3">
+          <div class="mb-3">
+            <div class="form-control w-25" id="username"></div>
+          </div>
+          <div class="mb-3">
+            <input id="text" type="text" class="form-control w-25 d-inline" autocomplete="off" placeholder="Ingrese mensaje..." required/>
+            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+          </div>
+          <hr>
+          <div id="messages"></div>
+        </form>
+      </div>  
+      
+    </div>
+    <br>
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
