@@ -29,35 +29,37 @@ class Products {
         catch (error) {
 			console.log('No hay productos cargados');
 		}
-        finally {
-            this.knex.destroy();
-        }
+        // finally {
+        //     this.knex.destroy();
+        // }
     }
 
     async save(object) {
         try {
-            await this.knex(this.table).insert(object)
+            const data = await this.knex(this.table).insert(object);
+            return data;
         } 
         catch (error) {
             console.log("error al guardar productos");
             throw error;
         }
-        finally {
-            this.knex.destroy();
-        }
+        // finally {
+        //     this.knex.destroy();
+        // }
     }
 
     async getAll() { 
         try {
-            await this.knex.from(this.table).select("*");
+            const data = await this.knex.from(this.table).select("*");
+            return data;
         }
         catch (error) {
             console.log("error al traer productos");
             throw error;
         }
-        finally {
-            this.knex.destroy();
-        }
+        // finally {
+        //     this.knex.destroy();
+        // }
 
     }
 }
