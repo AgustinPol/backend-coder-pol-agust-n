@@ -9,17 +9,17 @@ class Products {
         this.knex = require("knex")(mariaDB);
     }
 
-    init() {
+   async init() {
         try {
-            const tableExist = this.knex.schema.hasTable("productos");
+            const tableExist = await this.knex.schema.hasTable("productos");
             if (!tableExist) {
-                 return this.knex.schema.createTable("productos", table => {
-                    table.string("name", 100).notNullable();
+                 await this.knex.schema.createTable("productos", table => {
+                    table.string("title", 100).notNullable();
                     table.integer("price", 100).notNullable();
                     table.string("thumbnail", 255);
                     table.increments("id").primary();
                 });
-                // console.log("table created");
+                 console.log("table created");
             } else {
                 console.log("skipping creation...");
             }
@@ -33,9 +33,9 @@ class Products {
         }
     }
 
-    save(object) {
+    async save(object) {
         try {
-            return this.knex("productos").insert(object)
+            await this.knex("productos").insert(object)
         } 
         catch (error) {
             console.log("error");
@@ -46,9 +46,9 @@ class Products {
         }
     }
 
-    getAll() { 
+    async getAll() { 
         try {
-            return this.knex.from("productos").select("titulo","precio","url").orderBy("id","asc");
+            await this.knex.from("productos").select("title","price","thumbnail").orderBy("id","asc");
         }
         catch (error) {
             console.log("error");
@@ -60,5 +60,4 @@ class Products {
 
     }
 }
-
 module.exports = Products;

@@ -1,21 +1,4 @@
-let userName = sessionStorage.getItem("username");
-if (!userName) {
-  userName = prompt("Ingrese email");
-}
-$("#username").html(userName);
-
 const socket = io.connect();
-
-const render = (data) => {
-  data.forEach((msg) => {
-    $("#messages").prepend(`
-      <div>
-          <em class="text-primary fw-bold">${msg.author}</em>
-          [<em style={"color: brown;"}>${msg.time}</em>]: <em class="text-success fst-italic">${msg.text}</em>
-      </div>
-    `);
-  });
-}
 
 const addProduct = document.getElementById('addProduct');
 addProduct.addEventListener('submit', e => {
@@ -45,10 +28,29 @@ function addTable(products) {
       })
 }
 
+//MY CHAT
+
+let userName = sessionStorage.getItem("username");
+if (!userName) {
+  userName = prompt("Ingrese email");
+}
+$("#username").html(userName);
+
 socket.on("messages", (data) => {
   console.log(data);
   render(data);
 });
+
+const render = (data) => {
+  data.forEach((msg) => {
+    $("#messages").prepend(`
+      <div>
+          <em class="text-primary fw-bold">${msg.author}</em>
+          [<em style={"color: brown;"}>${msg.time}</em>]: <em class="text-success fst-italic">${msg.text}</em>
+      </div>
+    `);
+  });
+}
 
 $('#myChat').on('submit', e => {
   e.preventDefault();
