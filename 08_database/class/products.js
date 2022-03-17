@@ -5,15 +5,16 @@ const { mariaDB } = require("../configDB/mySql");
 const { sqlite } = require("../configDB/sqlite3");
 
 class Products {
-    constructor() {
+    constructor(tableName) {
         this.knex = require("knex")(mariaDB);
+        this.table = tableName;
     }
 
    async init() {
         try {
-            const tableExist = await this.knex.schema.hasTable("productos");
+            const tableExist = await this.knex.schema.hasTable(this.table);
             if (!tableExist) {
-                 await this.knex.schema.createTable("productos", table => {
+                 await this.knex.schema.createTable(this.table, table => {
                     table.string("title", 100).notNullable();
                     table.integer("price", 100).notNullable();
                     table.string("thumbnail", 255);
@@ -35,10 +36,10 @@ class Products {
 
     async save(object) {
         try {
-            await this.knex("productos").insert(object)
+            await this.knex(this.table).insert(object)
         } 
         catch (error) {
-            console.log("error");
+            console.log("error al guardar productos");
             throw error;
         }
         finally {
@@ -48,10 +49,10 @@ class Products {
 
     async getAll() { 
         try {
-            await this.knex.from("productos").select("title","price","thumbnail").orderBy("id","asc");
+            await this.knex.from(this.table).select("*");
         }
         catch (error) {
-            console.log("error");
+            console.log("error al traer productos");
             throw error;
         }
         finally {
