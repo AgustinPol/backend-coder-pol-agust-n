@@ -38,15 +38,20 @@ $("#username").html(userName);
 
 socket.on("messages", (data) => {
   console.log(data);
-  render(data);
+  if (data.lenght >0) {
+    render(data);
+  }
+  else {
+    document.getElementById("messages").innerHTML = "No hay mensajes"
+  }
 });
 
 const render = (data) => {
   data.forEach((msg) => {
     $("#messages").prepend(`
       <div>
-          <em class="text-primary fw-bold">${msg.author}</em>
-          [<em style={"color: brown;"}>${msg.time}</em>]: <em class="text-success fst-italic">${msg.text}</em>
+          <em class="text-primary fw-bold">${msg.email}</em>
+          [<em style={"color: brown;"}>${msg.time}</em>]: <em class="text-success fst-italic">${msg.mensaje}</em>
       </div>
     `);
   });
@@ -56,8 +61,9 @@ $('#myChat').on('submit', e => {
   e.preventDefault();
 
   const message = {
-    author: userName,
-    text: $("#text").val()
+    email: userName,
+    mensaje: $("#text").val(),
+    time: new Date().toLocaleString()
   };
 
   socket.emit("new-message", message);
