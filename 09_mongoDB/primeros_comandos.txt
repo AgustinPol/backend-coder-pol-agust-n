@@ -1,0 +1,24 @@
+// En la primera consola, levantamos el server.
+mongod --dbpath "C:\Users\agust\OneDrive\Escritorio\ecommerce\data" --logpath "C:\Users\agust\OneDrive\Escritorio\ecommerce\logs\mongo.log"
+
+// En la segunda consola abrimos la consola de mongosh
+mongosh
+
+// Creación de database
+use ecommerce
+
+// Creación de colecciones que usaremos
+db.createCollection("productos")
+db.createCollection("mensajes")
+ 
+ // Ingreso los productos a su colección correspondiente
+ db.productos.insertMany([{id: 1, title: "pendrive 32 Gb", price: 899, stock: 22},{id: 2, title: "Mouse verde", price: 1299, stock: 25}, {id: 3, title: "Mouse rosa", price: 2299, stock: 18}])
+
+ db.productos.insertMany([{id: 4, title: "pendrive 16 Gb", price: 699, stock: 30}, {id: 5, title: "Teclado Gamer Negro", price: 3999, stock: 20}])
+
+ // Ingreso los mensajes a su colección correspondiente
+ db.mensajes.insertMany([{user: "oliverAton@hotmail.com", time: new Date, message: "Hola Gente"}, {user: "kikiSound@gmail.com", time: new Date, message: "Buenas a todos" }])
+
+ db.mensajes.insertMany([{user: "kendraLolo@hotmail.com", time: new Date, message: "tienen stock del mouse rosa?"}, {user: "larakroft@gmail.com", time: new Date, message: "Cuales son los métodos de pago?"}])
+
+ db.mensajes.insertOne({user: loloNavas@yahoo.com, time: new Date, message: "me interesa el teclado gamer"})
