@@ -10,7 +10,7 @@ const io = new IOServer(httpServer);
 const productsApi = new Products("productos");
 const messagesApi = new Messages("mensajes");
 // const messages = []; 
-app.use(express.static("./public"));
+app.use(express.static("public"));
 
 productsApi.init();
 messagesApi.init();

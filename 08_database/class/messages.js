@@ -31,6 +31,7 @@ class Messages {
         try {
             const data = await this.knex(this.table).insert(mensaje);
             return data;
+            console.log("Saving message in DB")
         } 
         catch (error) {
             console.log("Error logging messages");
