@@ -4,11 +4,11 @@ const MongoContainer = require('../../containers/MongoContainer');
 const collection = 'products';
 
 const productsSchema = new Schema({
-  nombre: { type: String, required: true },
-  descripcion: { type: String },
-  codigo: { type: String, unique: true, required: true },
-  foto: { type: String },
-  precio: { type: Number, min: 0, required: true },
+  title: { type: String, required: true },
+  description: { type: String },
+  code: { type: String, unique: true, required: true },
+  img: { type: String },
+  price: { type: Number, min: 0, required: true },
   stock: { type: Number, min: 0, required: true },
   timestamp: { type: Date, min: Date.now() }
 });
