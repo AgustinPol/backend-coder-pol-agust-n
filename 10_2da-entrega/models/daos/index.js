@@ -12,14 +12,6 @@ switch(PERS) {
     ProductsDao = require('./products/MongoProductsDao');
     CartsDao = require('./carts/MongoCartsDao');
     break;
-  case 'mariadb':
-    break;
-  case 'sqlite':
-    break;
-  case 'file':
-    break;
-  case 'memory':
-    break;
   default:
     throw new Error('Invalid persistent method');
 }

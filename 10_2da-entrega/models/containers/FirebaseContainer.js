@@ -1,6 +1,7 @@
 const admin = require('firebase-admin');
 const { getFirestore } = require('firebase-admin/firestore');
 const { DB_CONFIG } = require('../../config');
+let firebaseLenght = 0;
 
 class FirebaseContainer {
   constructor(coll) {
@@ -9,11 +10,14 @@ class FirebaseContainer {
     this.query = db.collection(coll);
   }
 
-  connect() {
-    admin.initializeApp({
-      credential: admin.credential.cert(DB_CONFIG.firebase.credential)
-    });
-    console.log('Connected to Firestore!');
+    connect() {
+    if (!firebaseLenght) {
+      admin.initializeApp({
+        credential: admin.credential.cert(DB_CONFIG.firebase.credential)
+      });
+      console.log('Connected to Firestore!');
+   } 
+   firebaseLenght++;
   }
 
   async getAll() {
