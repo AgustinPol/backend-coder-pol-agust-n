@@ -3,7 +3,7 @@ const { DB_CONFIG } = require('../../config');
 
 class MongoContainer {
   constructor(collection, schema) {
-    this.connect().then(() => console.log('Database connected!'));
+    this.connect().then(() => console.log('MONGO DataBase connected!'));
     this.model = mongoose.model(collection, schema);
   }
 
